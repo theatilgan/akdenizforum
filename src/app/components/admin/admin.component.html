@@ -1,0 +1,66 @@
+<div id="AdminPanel">
+    <div class="row p-3 m-3">
+        <h5>Üye Yönetimi</h5>
+       <div class="row">
+           <ul style="list-style: none;">
+            <li><input class="form-control" placeholder="Ara" type="text"> <button class="btn btn-primary">Ara</button></li>
+            <li><Button (click)="YetkiliListele()" class="btn btn-info">Yetkililer</Button></li>
+           </ul>
+       </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Username</td>
+                <td>Mail</td>
+                <td>Ogrenci</td>
+                <td>Sil</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let uye of uyeler">
+                <td>{{uye.adsoyad}}</td>
+                <td>{{uye.mail}}</td>
+                <td>{{uye.ogrencimi}}</td>
+                <td><button (click)="Sil(uye.key)" class="btn btn-danger">Sil</button></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="row p-3 m-3">
+        <div class="col">
+            <h3>Yetkili Ekle</h3>
+            <form #frm="ngForm" (ngSubmit)="KayitYap()">
+                <input required class="form-control my-2" name="adsoyad" [(ngModel)]="secUye.adsoyad" placeholder="Username">
+                <input required class="form-control my-2" name="Mail" [(ngModel)]="secUye.mail" placeholder="Mail">
+                <input required class="form-control my-2" name="parola" [(ngModel)]="secUye.parola" placeholder="Parola">
+                <button class="btn btn-primary" type="submit" [disabled]="frm.invalid">Ekle</button>
+            </form>
+        </div>
+        <div class="col-md-8">
+            <h3>Mesajlar</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Ad Soyad</td>
+                        <td>Konu</td>
+                        <td>Email</td>
+                        <td>Mesaj</td>
+                        <td>Tarih</td>
+                        <td>Kontrol</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let mesaj of mesajlar">
+                        <td>{{mesaj.adsoyad}}</td>
+                        <td>{{mesaj.konu}}</td>
+                        <td>{{mesaj.mail}}</td>
+                        <td>{{mesaj.mesaj}}</td>
+                        <td>{{mesaj.date}}</td>
+                        <td><button (click)="SilMesaj(mesaj.key)" class="btn btn-primary">Sil</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

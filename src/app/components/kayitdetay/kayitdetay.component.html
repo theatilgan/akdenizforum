@@ -1,0 +1,46 @@
+<!--<button class="btn btn-primary" [routerLink]="['/kayitlar']">Geri Dön</button>-->
+
+<div id="PostDetail">
+  <button class="btn btn-outline-warning btn-sm ml-3" [routerLink]="['/kayitduzenle',secKayit.key]"*ngIf="uid==secKayit.uid">Düzenle</button>
+  <button class="btn btn-outline-danger btn-sm ml-3" (click)="Sil(secKayit.key)" *ngIf="uid==secKayit.uid">Sil</button>
+  <div class="heading">
+    <img src="assets/jenna.png" alt="">
+    <div class="detail">
+        <p>{{secKayit.icerik}}</p>
+    </div>
+    <hr>
+    <br>
+    <div class="mt-5"><b> {{secKayit.username}}</b> paylaştı</div>
+  </div>
+  <hr>
+  <div id="Yorumlar">
+    <form #frm="ngForm" (ngSubmit)="Kaydet()" class="row mb-3">
+        <div class="col-md-10">
+          <textarea name="yorum" [(ngModel)]="secYorum.yorum" required placeholder="Yorum Yap"></textarea>
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary mt-2">Yorum Yap</button>
+        </div>
+      </form>
+  <div *ngFor="let yorum of yorumlar" class="yorum mt-2">
+    <div class="row">
+      <div class="col-1 col-xxs-8">
+        <img src="assets/jenna.png" style="width: 42px; height: 42px; border-radius: 50%;" alt="">
+      </div>
+      <div class="col-lg-2 col-sm px-4 py-2" style="overflow: hidden;">
+        <div class="row">
+          {{yorum.username}}
+        </div>
+        <div class="row" style="font-size: 10px;">
+          {{yorum.date | date:'dd.MM.yyyy HH:mm'}}
+        </div>
+        
+      </div>
+      <div class="col-lg col-md p-2 ">
+        <textarea  disabled>{{yorum.yorum}}</textarea>
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>
+

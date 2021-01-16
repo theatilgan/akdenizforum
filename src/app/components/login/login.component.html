@@ -1,0 +1,21 @@
+<main >
+    <div>
+        <h1>
+            Heyecan verici bir Sosyal Deneyime Katılın.
+        </h1>
+    </div>
+    <div>
+        <form >
+            <ul>
+                <li><img src="assets/Login.jpg" height="46" alt=""></li>
+                <li>Kullanıcı Girişi</li>
+                <br>
+                <li><input type="text" class="form-control" placeholder="mail" name="mail" #mail></li>
+                <li><input type="password" class="form-control" placeholder="parola" name="parola" #parola></li>
+                <li><button type="submit" (click)="GirisYap(mail.value,parola.value)" class="btn btn-primary">Giriş</button></li>
+                <li [ngClass]="sonuc.islem ? 'alert alert-success':'alert alert-danger'" *ngIf="sonuc.mesaj?.length>0">
+                    {{sonuc.mesaj}}</li>
+            </ul>
+        </form>
+    </div>
+</main>

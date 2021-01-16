@@ -1,0 +1,82 @@
+<section class="row">
+  <div class="col-md-3">
+    <div id="left-side-3">
+      <div *ngIf="fbServis.OturumKontrol()" id="UserInfo">
+        <ul>
+          <li><img src="assets/jenna.png" alt=""></li>
+          <li>Merhaba <b> {{username}}</b> </li>
+        </ul>
+      </div>
+      <div *ngIf="!fbServis.OturumKontrol()" id="UserInfo">
+        <ul>
+          <li>Giriş Yapılmamış</li>
+        </ul>
+      </div>
+      <div id="Kategoriler">
+        <ul>
+          <li *ngIf="fbServis.OturumKontrol()" ><button  (click)="KayitGetirKullanici()" >Paylaşımlarım</button></li>
+          <li><button  (click)="KayitListele()" >Genel</button></li>
+          <hr>
+          <li><button (click)="KategoriyeGore('E-Spor')" >E-Spor</button></li>
+          <li><button (click)="KategoriyeGore('Girişimcilik')" >Girişimcilik</button></li>
+          <li><button (click)="KategoriyeGore('Dağcılık')" >Dağcılık</button></li>
+          <li><button (click)="KategoriyeGore('Kampçılık')" >Kampçılık</button></li>
+          <li><button (click)="KategoriyeGore('Bisiklet')" >Bisiklet</button></li>
+          <li><button (click)="KategoriyeGore('Havacılık')" >Havacılık</button></li>
+          <li><button (click)="KategoriyeGore('Diğer Kulüpler')" >Diğer Kulüpler</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg col-md-9">
+      <form *ngIf="fbServis.OturumKontrol()" #frm="ngForm" (ngSubmit)="Kaydet()" id="PostCreate">
+        
+          <div id="PostInput">
+              <img src="assets/jenna.png"  alt="">
+              <textarea name="icerik" placeholder="Ne düşünüyorsun ?" [(ngModel)]="secKayit.icerik" required></textarea>
+          </div>
+          <div>
+              <select class="form-control" #selectElem (change)="KategoriSec(selectElem.value)">
+                
+                <option *ngFor="let kategori of Kategoriler" [ngValue]="kategori">
+                  
+                    {{kategori.Name}}
+                </option>
+              </select>
+              <button type="submit" [disabled]="frm.invalid">Yayınla</button>
+
+          </div>
+          
+      </form>
+      <div id="Posts">
+          <a [routerLink]="['/kayitdetay',kayit.key]" *ngFor="let kayit of (kayitlar).reverse()" class="post">
+              <div class="heading">
+                  <img src="assets/jenna.png"  alt="">
+                  <div class="detail">
+                    <ul>
+                      <li><a>{{kayit.username}} </a></li>
+                      <li>{{kayit.kayTarih | date:'dd.MM.yyyy HH:mm'}}</li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="mycontent">
+                <p >{{kayit.icerik}}</p>
+              </div>
+            </a>
+      </div>
+  </div>
+  <div class="col-md-3">
+    <div id="right-side-3">
+      <div id="SonÜyeler">
+        <ul class="pt-2" style="color: #757a91;list-style: none;">
+          <li class="mb-2" >Aramıza Katılanlar</li>
+          <hr>
+          <li class="mb-3" style="width: 100%; overflow: hidden;" *ngFor="let uye of uyeler" >
+            <img src="assets/jenna.png" style="border-radius: 50%; width: 42px; height: 42px;" alt="">
+            {{uye.adsoyad}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

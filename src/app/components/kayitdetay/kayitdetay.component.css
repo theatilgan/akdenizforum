@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+#PostDetail{
+    font-family: 'Montserrat', sans-serif;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 10px;
+    color: #4a4a4a;
+    display: block;
+    padding: 16px;
+    border: 1px solid #e8e8e8;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.4s;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,0.1), 0 0px 0 1px rgba(10,10,10,0.02);
+}
+#PostDetail:hover{
+    text-decoration: none;
+}
+#PostDetail > .heading {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    width: 100%;
+    min-height: 50px;
+}
+#PostDetail > .heading img{
+
+    float:left;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.detail {
+    width: calc(100% - 57px);
+    text-align: start;
+    padding-top: 15px;
+    color: #757a91;
+}
+#Yorumlar > div:first-child{
+    width: 100%;
+    height: 60px;
+}
+#Yorumlar  textarea{
+    padding: 5px;
+    width: 100%;
+    height: 60px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    outline: none;
+    resize: none;
+}
+@media only screen and (max-width: 950px) {
+    #PostDetail{
+        width: 100%;
+        margin: 0px;
+    }
+    
+}

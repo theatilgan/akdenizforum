@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+
+#AdminPanel{
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,0.1), 0 0px 0 1px rgba(10,10,10,0.02);
+}
+#AdminPanel ul li input{
+    max-width: 200px;
+    float: left;
+}
+#AdminPanel ul li:first-child{
+    width: 300px;
+}
+#AdminPanel ul li:first-child button {
+    margin-left: 10px;
+    float: left;
+}
+#AdminPanel ul li{
+    float: left;
+    width: 150px;
+    margin-right: 20px;
+}

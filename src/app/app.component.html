@@ -1,0 +1,22 @@
+
+<main class="mx-auto">
+    <nav>
+      <a routerLink="kayitlar">
+        <img src="assets/orange.jpg" alt="">
+        <span>Akdeniz Forum </span>
+      </a>
+      <ul>
+        <li><a routerLink="iletisim" >İletişim</a></li>
+        <li><a *ngIf="fbservis.OturumKontrol()" (click)="CikisYap()">Çıkış</a></li>
+        <li><a *ngIf="!fbservis.OturumKontrol()" routerLink="register" >Üye Ol</a></li>
+        <li><a *ngIf="!fbservis.OturumKontrol()" routerLink="login" >Giriş Yap</a></li>
+        
+        <li><a routerLink="admin" *ngIf="username == 'admin'">Admin</a></li>
+        
+        
+      </ul>
+    </nav>
+    <router-outlet>
+  
+    </router-outlet>
+  </main>

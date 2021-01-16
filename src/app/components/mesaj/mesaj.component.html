@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="offset-3 mt-5 col-md-6" style="padding: 30px; background-color: white; border-radius: 10px;">
+            <form #frm="ngForm" (ngSubmit)="Kaydet()">
+                <p style="width: 100%; text-align: center;">Bize Ulaşın</p>
+                    <input required class="form-control my-2" name="adsoyad" [(ngModel)]="secMesaj.adsoyad" placeholder="İsim">
+                    <input required class="form-control my-2" name="Mail" [(ngModel)]="secMesaj.mail" placeholder="Mail">
+                    <input required class="form-control my-2" name="konu" [(ngModel)]="secMesaj.konu" placeholder="Konu">
+                    <textarea style="outline: none;resize: none;" required class="form-control my-2" name="mesaj" [(ngModel)]="secMesaj.mesaj" placeholder="Mesaj"></textarea>
+                    <button  style="width: 70%;margin-left: 15%;" class="btn btn-primary mt-2" type="submit" [disabled]="frm.invalid">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>
