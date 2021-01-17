@@ -1,14 +1,11 @@
 import { MesajComponent } from './components/mesaj/mesaj.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { LandingComponent } from './components/landing/landing.component';
-import { DosyalarComponent } from './components/dosyalar/dosyalar.component';
 import { KayitlarComponent } from './components/kayitlar/kayitlar.component';
-import { KayitsilComponent } from './components/kayitsil/kayitsil.component';
 import { KayitduzenleComponent } from './components/kayitduzenle/kayitduzenle.component';
 import { KayitdetayComponent } from './components/kayitdetay/kayitdetay.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -23,10 +20,6 @@ const routes: Routes = [
   {
     path: '',
     component: LandingComponent
-  },
-  {
-    path: 'dosya',
-    component: DosyalarComponent
   },
   {
     path: 'admin',
@@ -55,14 +48,6 @@ const routes: Routes = [
   {
     path: 'kayitduzenle/:key',
     component: KayitduzenleComponent,
-    canActivate: [AngularFireAuthGuard],
-    data: {
-      authGuardPipe: redirectLogin
-    }
-  }, 
-  {
-    path: 'kayitsil/:key',
-    component: KayitsilComponent,
     canActivate: [AngularFireAuthGuard],
     data: {
       authGuardPipe: redirectLogin

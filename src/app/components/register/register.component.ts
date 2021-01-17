@@ -19,21 +19,26 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
   KayitYap() {
-    this.fbServis.UyeOl(this.secUye).then(d => {
-      d.user.updateProfile({
-        displayName: this.secUye.adsoyad
-      }).then();
-      this.secUye.uid = d.user.uid;
-      localStorage.setItem("user", JSON.stringify(d.user));
-      this.UyeEkle();
-    }, err => {
-      this.sonuc.islem = false;
-      this.sonuc.mesaj = "Hata Oluştu Tekrar Deneyiniz!";
-    });
+    if(this.secUye.adsoyad == "admin"){
+      alert("bu kullanıcı adı alınamaz")
+    }
+    else{
+      this.fbServis.UyeOl(this.secUye).then(d => {
+        d.user.updateProfile({
+          displayName: this.secUye.adsoyad
+        }).then();
+        this.secUye.uid = d.user.uid;
+        this.UyeEkle();
+      }, err => {
+        this.sonuc.islem = false;
+        this.sonuc.mesaj = "Hata Oluştu Tekrar Deneyiniz!";
+      });
+    }
+   
   }
   UyeEkle() {
     this.fbServis.UyeEkle(this.secUye).then(d => {
-      this.router.navigate(['/kayitlar']);
+      this.router.navigate(['/login']);
     });
   }
 

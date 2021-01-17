@@ -5,5 +5,4 @@ export class İletisim{
     mail:string;
     mesaj:string;
     date:string;
-    kontrol:boolean;
 }

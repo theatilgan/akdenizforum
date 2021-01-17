@@ -3,8 +3,7 @@
         <h5>Üye Yönetimi</h5>
        <div class="row">
            <ul style="list-style: none;">
-            <li><input class="form-control" placeholder="Ara" type="text"> <button class="btn btn-primary">Ara</button></li>
-            <li><Button (click)="YetkiliListele()" class="btn btn-info">Yetkililer</Button></li>
+            <li><form (submit)=UyeGetir() ><input class="form-control" name="uyeadi" [(ngModel)]="uyeadi" placeholder="Ara" type="text"> <button type="submit" class="btn btn-primary">Ara</button></form> </li>
            </ul>
        </div>
     <table class="table table-striped">
@@ -27,16 +26,7 @@
     </table>
     </div>
     <div class="row p-3 m-3">
-        <div class="col">
-            <h3>Yetkili Ekle</h3>
-            <form #frm="ngForm" (ngSubmit)="KayitYap()">
-                <input required class="form-control my-2" name="adsoyad" [(ngModel)]="secUye.adsoyad" placeholder="Username">
-                <input required class="form-control my-2" name="Mail" [(ngModel)]="secUye.mail" placeholder="Mail">
-                <input required class="form-control my-2" name="parola" [(ngModel)]="secUye.parola" placeholder="Parola">
-                <button class="btn btn-primary" type="submit" [disabled]="frm.invalid">Ekle</button>
-            </form>
-        </div>
-        <div class="col-md-8">
+        <div class="col-12">
             <h3>Mesajlar</h3>
             <table class="table table-striped">
                 <thead>
@@ -55,7 +45,7 @@
                         <td>{{mesaj.konu}}</td>
                         <td>{{mesaj.mail}}</td>
                         <td>{{mesaj.mesaj}}</td>
-                        <td>{{mesaj.date}}</td>
+                        <td>{{mesaj.date | date:'dd.MM.yyyy HH:mm'}}</td>
                         <td><button (click)="SilMesaj(mesaj.key)" class="btn btn-primary">Sil</button></td>
                     </tr>
                 </tbody>

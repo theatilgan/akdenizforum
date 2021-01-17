@@ -12,7 +12,6 @@
               <li><input type="text" class="form-control" placeholder="Username" name="adsoyad" #adsoyad [(ngModel)]="secUye.adsoyad" required></li>
               <li><input type="text" class="form-control" placeholder="Mail" name="mail" #mail [(ngModel)]="secUye.mail" required></li>
               <li><input type="password" class="form-control" placeholder="Parola" name="parola" #parola [(ngModel)]="secUye.parola" required></li>
-              <li><label>Öğrenci misiniz ?</label> <input type="checkbox" name="ogrencimi" #ogrenci [(ngModel)]="secUye.ogrencimi"></li>
               <li><button type="submit" [disabled]="frm.invalid" class="btn btn-primary">Kayıt Ol</button></li>
           </ul>
       </form>

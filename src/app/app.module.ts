@@ -1,12 +1,9 @@
-import { DosyalarComponent } from './components/dosyalar/dosyalar.component';
 import { KayitlarComponent } from './components/kayitlar/kayitlar.component';
-import { KayitsilComponent } from './components/kayitsil/kayitsil.component';
 import { KayitduzenleComponent } from './components/kayitduzenle/kayitduzenle.component';
 import { KayitdetayComponent } from './components/kayitdetay/kayitdetay.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { environment } from './../environments/environment';
-import { HomeComponent } from './components/home/home.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -29,14 +26,11 @@ import { MesajComponent } from './components/mesaj/mesaj.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     LoginComponent,
     RegisterComponent,
     KayitdetayComponent,
     KayitduzenleComponent,
-    KayitsilComponent,
     KayitlarComponent,
-    DosyalarComponent,
     LandingComponent,
     AdminComponent,
     MesajComponent

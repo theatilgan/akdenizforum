@@ -16,6 +16,7 @@ export class KayitlarComponent implements OnInit {
   uid: string;
   username:any;
   kategori:any;
+  ogrencimiKontol:any;
   Kategoriler: any[] = [
     { Name: 'Genel'},
     { Name: 'E-Spor'},
@@ -26,7 +27,7 @@ export class KayitlarComponent implements OnInit {
     { Name: 'Havacılık'},
     { Name: 'Diğer'},
     ];
-  curKat: any;
+  curKat: any = 'Genel';
   kayitlar: Kayit[];
   uyeler:Uye[];
   constructor(
@@ -42,6 +43,7 @@ export class KayitlarComponent implements OnInit {
       this.uid = user.uid;
       this.adsoyad = user.displayName;
       this.username = user.displayName;
+
     }
     
     
@@ -101,7 +103,6 @@ export class KayitlarComponent implements OnInit {
     this.secKayit.duzTarih = tarih.getTime().toString();
     this.secKayit.username = this.adsoyad;
     this.secKayit.kategori = this.curKat;
-    this.secKayit.baslik = "null";
     this.fbServis.KayitEkle(this.secKayit).then(d => {
       this.router.navigate(['/kayitlar']);
     });

@@ -63,6 +63,11 @@ export class KayitdetayComponent implements OnInit {
       this.router.navigate(['/kayitlar']);
     });
   }
+  YorumSil(key) {
+    this.fbServis.YorumSil(key).then(d => {
+      this.router.navigate(['/kayitlar' ,this.key]);
+    });
+  }
 
   
 

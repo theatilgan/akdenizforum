@@ -20,7 +20,6 @@ export class MesajComponent implements OnInit {
   ngOnInit(): void {
   }
   Kaydet() {
-    this.secMesaj.kontrol = false;
     var tarih = new Date();
     this.secMesaj.date = tarih.getTime().toString();
     this.fbServis.MesajEkle(this.secMesaj).then(d => {

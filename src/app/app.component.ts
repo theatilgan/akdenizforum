@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'uyg01';
   username:any;
+  
   constructor(
     public fbservis : FbservisService,
     public router:Router

@@ -1,4 +1,3 @@
-import { Yetkili } from './../models/yetkili';
 import { Uye } from './../models/uye';
 import { Kayit } from './../models/kayit';
 import { Injectable } from '@angular/core';
@@ -14,23 +13,21 @@ export class FbservisService {
   private dbKayit = '/Kayitlar';
   private dbUye = '/Uyeler';
   private dbYorum = '/Yorumlar';
-  private dbYetkili = '/Yetkili';
   private dbİletisim = '/Iletisim';
 
   kayitRef: AngularFireList<Kayit> = null;
   uyeRef: AngularFireList<Uye> = null;
   yorumRef: AngularFireList<Yorum> = null;
-  yetkiliRef: AngularFireList<Yetkili> = null;
   iletisimRef: AngularFireList<İletisim> = null;
 
   constructor(
+    
     public db: AngularFireDatabase,
     public afAuth: AngularFireAuth
   ) {
     this.kayitRef = db.list(this.dbKayit);
     this.uyeRef = db.list(this.dbUye);
     this.yorumRef = db.list(this.dbYorum);
-    this.yetkiliRef = db.list(this.dbYetkili);
     this.iletisimRef = db.list(this.dbİletisim);
   }
 
@@ -47,20 +44,7 @@ export class FbservisService {
       return false;
     }
   }
-  YetkiKontrol(uid:string){
-    var list = this.db.list("/Uyeler", q => q.orderByChild("yetkilimi").equalTo(true))
-    
-    
-  }
-  
-  
-  YetkiliEkle(uye:Yetkili){
-    return this.yetkiliRef.push(uye);
-  }
-  YetkiliKullanıcıListele(){
-    return this.db.list("/Uyeler", q => q.orderByChild("yetkilimi").equalTo(true));
-  }
-  
+
   UyeListele(){
     return this.db.list("/Uyeler", q => q.orderByChild("uid").limitToLast(10));
   }
@@ -68,6 +52,9 @@ export class FbservisService {
     return this.afAuth.createUserWithEmailAndPassword(uye.mail, uye.parola);
   }
 
+  UyeByName(name: string) {
+    return this.db.list("/Uyeler", q => q.orderByChild("adsoyad").startAt(name));
+  }
   UyeEkle(uye: Uye) {
     return this.uyeRef.push(uye);
   }

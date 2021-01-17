@@ -5,7 +5,6 @@ export class Uye {
     mail: string;
     parola: string;
     uid: string;
-    ogrencimi:boolean;
     yetkilimi:boolean;
     kayTarih:string;
 }

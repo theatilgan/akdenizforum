@@ -1,6 +1,6 @@
 
 import { Uye } from './../../models/uye';
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { FbservisService } from 'src/app/services/fbservis.service';
 import { Router } from '@angular/router';
 import { İletisim } from 'src/app/models/iletisim';
@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
   username:any;
   uyeler:Uye[];
   mesajlar:İletisim[];
+  uyeadi:string;
   constructor(
     public fbServis: FbservisService,
     public router: Router
@@ -27,21 +28,21 @@ export class AdminComponent implements OnInit {
     
     
   }
-  YetkiliListele(){
-    this.fbServis.YetkiliKullanıcıListele().snapshotChanges().subscribe(data => {
-      this.uyeler = [];
-      data.forEach(satir => {
-        const y = { ...satir.payload.toJSON(), key: satir.key };
-        this.uyeler.push(y as Uye);
-      });
-    });
-  }
   MesajListele() {
     this.fbServis.MesajlarGetir().snapshotChanges().subscribe(data => {
       this.mesajlar = [];
       data.forEach(satir => {
         const y = { ...satir.payload.toJSON(), key: satir.key };
         this.mesajlar.push(y as İletisim);
+      });
+    });
+  }
+  UyeGetir(){
+    this.fbServis.UyeByName(this.uyeadi).snapshotChanges().subscribe(data => {
+      this.uyeler = [];
+      data.forEach(satir => {
+        const y = { ...satir.payload.toJSON(), key: satir.key };
+        this.uyeler.push(y as Uye);
       });
     });
   }
@@ -65,25 +66,7 @@ export class AdminComponent implements OnInit {
       this.router.navigate(['/admin']);
     });
   }
-  KayitYap() {
-    this.fbServis.UyeOl(this.secUye).then(d => {
-      d.user.updateProfile({
-        displayName: this.secUye.adsoyad
-      }).then();
-      this.secUye.yetkilimi = true;
-      this.secUye.uid = d.user.uid;
-      
-      localStorage.setItem("user", JSON.stringify(d.user));
-      this.UyeEkle();
-    }, err => {
-      alert("hata")
-    });
-  }
-  UyeEkle() {
-    this.fbServis.YetkiliEkle(this.secUye).then(d => {
-      this.router.navigate(['/kayitlar']);
-    });
-  }
+  
 
 
 }
